@@ -1,5 +1,7 @@
 package com.java.core.serialization;
 
+import com.java.core.serialization.util.SerializationUtil;
+
 public class SerializationTest 
 {
 	public static void main(String[] args) 

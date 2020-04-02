@@ -1,4 +1,4 @@
-package com.java.core.serialization;
+package com.java.core.serialization.util;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
