@@ -1,11 +1,31 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
- xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
- xsi:schemaLocation="http://www.springframework.org/schema/beans
-   http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-3.0.xsd">
    
-   <bean id="hello" class="com.spring.core.HelloWorld" >
+   <!-- <bean id="hello" class="com.spring.core.HelloWorld" >
    		<property name="message" value="Hello World!!!"/>
+   </bean> -->
+   
+   <bean id="helloWorld" class="com.spring.core.HelloWorld" >
+   	<constructor-arg name="message" value="Hello World!!!" />
    </bean>
+   
+   <bean id="employee" class="com.spring.core.Employee"  >
+   	<property name="name" value="John" />
+   	<!-- <property name="transportService" ref="transportService"/> -->
+   </bean>
+   
+   <!-- <bean id="transportService" class="com.spring.core.TransportService" >
+   	<property name="transportMode" value="Car" /> 
+   </bean> -->
+   
+   <context:annotation-config/>
+   
+   <context:component-scan base-package="com.spring.core" />
  
 </beans>
