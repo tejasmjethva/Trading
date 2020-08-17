@@ -3,16 +3,27 @@ package com.trading.swing.moneyflow;
 import static com.trading.swing.moneyflow.HeaderEnum.SYMBOL;
 import static com.trading.swing.moneyflow.HeaderEnum.VALUE_OF_SECURITY;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+import com.opencsv.CSVWriter;
 
 public class SwingLoadMasterFile extends SwingLoadFile
 {
 	private static final long VALUE_THRESHOLD = 10000000;
 	
-	private static final String FILE_NAME = "CF-Insider-Trading-equities-18-04-2020-to-18-07-2020.csv";
+	private static final String FILE_NAME = "CF-Insider-Trading-equities-17-05-2020-to-17-08-2020.csv";
+	
+	private static final String OUTPUT_FILE_NAME = "CompanyList";
 
 	public static void main(String[] args) 
 	{
@@ -74,8 +85,22 @@ public class SwingLoadMasterFile extends SwingLoadFile
 		
 		//System.out.println(finalSymbolValueMap);
 		
-		finalSymbolValueMap.keySet().stream().sorted().forEach(symbol -> System.out.println(symbol));
+		Set<String> symbolSet = finalSymbolValueMap.keySet().stream().sorted().collect(Collectors.toCollection(LinkedHashSet::new));
 		
-		System.out.println(finalSymbolValueMap.keySet().size());
+		System.out.println(symbolSet.size());
+		
+		System.out.println(symbolSet);
+		
+		LocalDate today = LocalDate.now();
+		
+		try(FileWriter outputfile = new FileWriter(FILES_DIR_PATH + File.separator + OUTPUT_FILE_NAME + "-" + today + ".csv");
+			CSVWriter csvWriter = new CSVWriter(outputfile);)
+		{
+	        symbolSet.stream().forEach(symbol -> csvWriter.writeNext(new String[]{symbol}));
+		} 
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		} 
 	}
 }

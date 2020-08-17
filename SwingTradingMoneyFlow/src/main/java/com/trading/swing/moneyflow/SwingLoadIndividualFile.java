@@ -10,7 +10,7 @@ import static com.trading.swing.moneyflow.HeaderEnum.NUMBER_OF_SECURITITES;
 
 public class SwingLoadIndividualFile extends SwingLoadFile
 {
-	private static final String FILE_NAME = "CF-Insider-Trading-equities-SHK-18-Jul-2020.csv";
+	private static final String FILE_NAME = "CF-Insider-Trading-equities-HEROMOTOCO-17-Aug-2020.csv";
 	
 	public static void main(String[] args) 
 	{
@@ -38,8 +38,9 @@ public class SwingLoadIndividualFile extends SwingLoadFile
 			totalSecurities = totalSecurities + Long.parseLong(map.get(NUMBER_OF_SECURITITES.getHeader()));
 
 			totalValue = totalValue + Double.parseDouble(map.get(VALUE_OF_SECURITY.getHeader()));
-		}
 
+		}
+		
 		return totalValue / totalSecurities;
 	}
 }

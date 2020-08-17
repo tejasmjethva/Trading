@@ -23,7 +23,7 @@ public class SwingLoadFile
 	private static final List<String> HEADERS = Arrays.asList(SYMBOL.getHeader(), VALUE_OF_SECURITY.getHeader(),
 			CATEGORY_OF_PERSON.getHeader(), MODE_OF_ACQUISITION.getHeader(), NUMBER_OF_SECURITITES.getHeader());
 
-	private static final String FILES_DIR_PATH = "C:\\Users\\hima\\Downloads\\tejas\\Work\\SwingFiles\\";
+	protected static final String FILES_DIR_PATH = "C:\\Users\\hima\\Downloads\\tejas\\Work\\SwingFiles\\";
 	
 	protected static void populateDataList(List<Map<String, String>> dataList, Map<Integer, String> indexHeaderMap, 
 			String fileName, boolean isLoadingIndividualFile) 
