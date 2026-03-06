@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Navigate to the project directory (absolute path for reliability)
-cd "/Users/tejasjethva/code/GenAI/TradingStrategyCalculator"
+# Navigate to the script's directory
+cd "$(dirname "$0")"
 
 # Check if virtual environment exists, if not create it
 if [ ! -d "venv" ]; then
